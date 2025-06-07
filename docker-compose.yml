@@ -3,7 +3,7 @@ services:
     build: tools
     user: 1000:1000
     ports:
-      - "80:80"
+      - "81:80"
     volumes:
       - ./upload:/var/www/html
     depends_on:
@@ -13,7 +13,7 @@ services:
                  wait-for-it mysql:3307 -t 60 &&
                  cp config-dist.php config.php;
                  cp admin/config-dist.php admin/config.php;
-                 php /var/www/html/install/cli_install.php install --username admin --password admin --email email@example.com --http_server http://localhost/ --db_driver mysqli --db_hostname mysql --db_username root --db_password opencart --db_database opencart --db_port 3306 --db_prefix oc_;
+                 php /var/www/html/install/cli_install.php install --username admin --password admin --email email@example.com --http_server http://localhost/ --db_driver mysqli --db_hostname mysql --db_username root --db_password opencart --db_database opencart --db_port 3307 --db_prefix oc_;
                  touch /var/www/html/install.lock;
                fi &&
                apache2-foreground"
